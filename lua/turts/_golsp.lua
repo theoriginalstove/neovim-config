@@ -5,6 +5,7 @@ local configs = require("lspconfig/configs")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -49,7 +50,6 @@ function goimports(timeoutms)
 
     local params = vim.lsp.util.make_range_params()
     params.context = context
-    
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeoutms)
     if not result or next(result) == nil then return end
     local actions = result[1].result

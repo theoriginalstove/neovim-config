@@ -92,6 +92,9 @@ Plug 'akinsho/bufferline.nvim', {'tag':'v2.*'}
 Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
 
+" Tabnine
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
 call plug#end()
 
 set background=dark
