@@ -50,3 +50,6 @@ map('n','<Leader>B','<Cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoi
 map('n','<Leader>lp',' <Cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>',options)
 map('n','<Leader>dr',' <Cmd>lua require"dap".repl.open()<CR>',options)
 map('n','<Leader>dl',' <Cmd>lua require"dap".run_last()<CR>',options)
+
+-- Neotest remaps
+map('n', '<leader>nts', '<Cmd>lua require"neotest".summary.toggle()<CR>', options)

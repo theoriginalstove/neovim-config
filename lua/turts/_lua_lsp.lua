@@ -4,6 +4,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 local lspconfig = require("lspconfig")
 
+lspconfig.eslint.setup{}
 
 
 lspconfig.sumneko_lua.setup {

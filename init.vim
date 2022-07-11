@@ -74,17 +74,18 @@ Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'folke/todo-comments.nvim'
 
+" Typescript
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+
 " git blame 
 Plug 'f-person/git-blame.nvim'
 
 "project workspace
 Plug 'ahmedkhalf/project.nvim'
 
-" Airline - Economy class
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
 " bufferline
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', {'tag':'v2.*'}
 
@@ -94,6 +95,11 @@ Plug 'leoluz/nvim-dap-go'
 
 " Tabnine
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
+" Test framework
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-go'
 
 call plug#end()
 
@@ -114,11 +120,11 @@ inoremap <C-]> <C-X><C-]>
 " nnoremap <leader>n :NERDTree<CR>
 " nnoremap <C-T> :NERDTreeToggle<CR>
 " nnoremap <leader>ns :NERDTreeFind<CR>
-
-augroup TheOriginalStove
-    autocmd!
-    autocmd FileType yaml,yml,js,json,vue,css,scss setlocal ts=2 sts=2 sw=2 expandtab
-augroup END
-
 lua require("turts")
+
+" augroup TheOriginalStove
+"     autocmd!
+"     autocmd FileType yaml,yml,js,json,vue,css,scss,ts  setlocal ts=2 sts=2 sw=2 expandtab
+" augroup END
+
 
