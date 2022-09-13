@@ -40,7 +40,6 @@ set wildignore+=**/.git/*
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
@@ -49,6 +48,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+Plug 'nvim-treesitter/nvim-treesitter-refactor' 
 Plug 'windwp/nvim-ts-autotag'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -101,6 +101,9 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-go'
 
+" editorconfig
+Plug 'gpanders/editorconfig.nvim'
+
 call plug#end()
 
 set background=dark
@@ -122,9 +125,5 @@ inoremap <C-]> <C-X><C-]>
 " nnoremap <leader>ns :NERDTreeFind<CR>
 lua require("turts")
 
-" augroup TheOriginalStove
-"     autocmd!
-"     autocmd FileType yaml,yml,js,json,vue,css,scss,ts  setlocal ts=2 sts=2 sw=2 expandtab
-" augroup END
 
 

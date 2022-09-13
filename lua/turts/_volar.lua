@@ -38,9 +38,11 @@ lspconfig.volar.setup{
 }
 
 lspconfig.denols.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    root_dir = lspconfig.util.root_pattern("deno.json"),
 }
 
 lspconfig.tsserver.setup{
-    on_attach = on_attach
+    on_attach = on_attach,
+    root_dir = lspconfig.util.root_pattern("package.json"),
 }

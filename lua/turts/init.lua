@@ -32,7 +32,7 @@ require("lualine").setup{
 
 autocmd({"FileType"}, {
     group = StoveGroup,
-    pattern = "*.js",
+    pattern = "js,tsx,jsx,vue,html,ts",
     callback = function()
         vim.opt.tabsize = 2
         vim.opt.shiftwidth = 2
