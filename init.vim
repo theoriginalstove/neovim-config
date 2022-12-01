@@ -104,6 +104,10 @@ Plug 'nvim-neotest/neotest-go'
 " editorconfig
 Plug 'gpanders/editorconfig.nvim'
 
+"auto tag and autopairs
+Plug 'windwp/nvim-autopairs'
+Plug 'windwp/nvim-ts-autotag'
+
 call plug#end()
 
 set background=dark
