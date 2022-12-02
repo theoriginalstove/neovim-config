@@ -3,7 +3,7 @@
 "======================================
 
 syntax on
-set mouse=a
+
 set exrc
 set guicursor=a:block
 set relativenumber
@@ -26,6 +26,7 @@ set encoding=UTF-8
 set splitright
 set splitbelow
 set colorcolumn=0
+set mouse=a
 
 highlight ColorColumn ctermbg=0 guibg=yellow
 " Give more space for displaying messages.
