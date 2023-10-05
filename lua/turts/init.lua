@@ -26,7 +26,7 @@ require("turts._yamlls")
 require("lualine").setup{
     options = {
         icons_enabled = true,
-        theme = 'gruvbox-material'
+        theme = 'everforest'
     }
 }
 

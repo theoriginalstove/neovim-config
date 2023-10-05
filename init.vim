@@ -26,6 +26,8 @@ set encoding=UTF-8
 set splitright
 set splitbelow
 set colorcolumn=0
+set list
+set listchars=trail:·,precedes:«,extends:»,tab:▸▸
 
 highlight ColorColumn ctermbg=0 guibg=yellow
 " Give more space for displaying messages.
@@ -65,6 +67,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 
 Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'morhetz/gruvbox'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -111,7 +115,7 @@ Plug 'windwp/nvim-ts-autotag'
 call plug#end()
 
 set background=dark
-let g:gruvbox_material_background = 'hard'
+let g:everforest_background = 'hard'
 colorscheme gruvbox-material
 
 "nvim terminal escape
