@@ -31,6 +31,7 @@ lspconfig.gopls.setup{
     on_attach = on_attach,
     settings = {
         gopls = {
+            gofumpt = true,
             experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
@@ -76,8 +77,7 @@ if not configs.golang_lint_ls then
         }
     }
 end
---lspconfig.golangci_lint_ls.setup {
---    filetypes = {'go','gomod'}
---}
 
+
+lspconfig.golangci_lint_ls.setup{}
 
