@@ -112,10 +112,13 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 
+"tree sitter for just files
+Plug 'IndianBoy42/tree-sitter-just'
+
 call plug#end()
 
 set background=dark
-let g:everforest_background = 'hard'
+let g:gruvbox_background = 'hard'
 colorscheme gruvbox-material
 
 "nvim terminal escape

@@ -20,7 +20,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
-    vim.cmd('au BufWritePre *.go lua goimports(1000)')
+    vim.cmd('au BufWritePre *.go lua Goimports(1000)')
     vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -31,6 +31,7 @@ lspconfig.gopls.setup{
     on_attach = on_attach,
     settings = {
         gopls = {
+            gofumpt = true,
             experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
@@ -44,7 +45,7 @@ lspconfig.gopls.setup{
     }
 }
 
-function goimports(timeoutms)
+function Goimports(timeoutms)
     local context = {source={organizeImports=true}}
     vim.validate {context={context, "t", true}}
 
@@ -76,8 +77,8 @@ if not configs.golang_lint_ls then
         }
     }
 end
---lspconfig.golangci_lint_ls.setup {
---    filetypes = {'go','gomod'}
---}
 
+
+-- apparently this causes issues with saving
+--lspconfig.golangci_lint_ls.setup{}
 
