@@ -89,7 +89,8 @@ cmp.setup({
         end,
     },
     sources = cmp.config.sources({
-        { name = 'cmp_tabnine' },
+        { name = 'cody' },
+--        { name = 'cmp_tabnine' },
         { name = 'nvim_lua' },
 
         { name = 'nvim_lsp_signature_help' },

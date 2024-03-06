@@ -98,7 +98,10 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'leoluz/nvim-dap-go'
 
 " Tabnine
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+"
+" Cody - Sourcegraph AI
+Plug 'sourcegraph/sg.nvim', { 'do': 'nvim -l build/init.lua' }
 
 " Test framework
 Plug 'antoinemadec/FixCursorHold.nvim'
