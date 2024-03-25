@@ -3,7 +3,7 @@
 "======================================
 
 syntax on
-
+set mouse=a
 set exrc
 set guicursor=a:block
 set relativenumber
@@ -26,7 +26,8 @@ set encoding=UTF-8
 set splitright
 set splitbelow
 set colorcolumn=0
-set mouse=a
+set list
+set listchars=trail:·,precedes:«,extends:»,tab:▸▸
 
 highlight ColorColumn ctermbg=0 guibg=yellow
 " Give more space for displaying messages.
@@ -66,6 +67,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 
 Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+Plug 'morhetz/gruvbox'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -109,10 +112,15 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 
+"tree sitter for just files
+Plug 'IndianBoy42/tree-sitter-just'
+
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+
 call plug#end()
 
 set background=dark
-let g:gruvbox_material_background = 'hard'
+let g:gruvbox_background = 'hard'
 colorscheme gruvbox-material
 
 "nvim terminal escape

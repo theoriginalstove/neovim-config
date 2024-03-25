@@ -19,14 +19,16 @@ require("turts._terraformlsp")
 require("turts._todo")
 require("turts._tsserver")
 require("turts._treeseeter")
+require("turts._templ")
 require("turts._volar")
 require("turts._yamlls")
+require("turts._neorg")
 
 
 require("lualine").setup{
     options = {
         icons_enabled = true,
-        theme = 'gruvbox-material'
+        theme = 'gruvbox'
     }
 }
 
@@ -39,4 +41,11 @@ autocmd({"FileType"}, {
         vim.opt.softtabstop = 2
         vim.opt.expandtab = true
     end
+})
+
+
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
 })
