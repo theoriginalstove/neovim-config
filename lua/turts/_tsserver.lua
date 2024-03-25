@@ -6,7 +6,7 @@ if not ok then
     return
 end
 
-local capabilities = cap.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = cap.default_capabilities()
 
 local buf_map = function(bufnr, mode, lhs, rhs, opts)
     vim.api.nvim_buf_set_keymap(bufnr,mode, lhs, rhs, opts or {

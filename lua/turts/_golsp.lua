@@ -2,7 +2,7 @@ local u = require("turts.utils")
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig/configs")
 -- install gopls with `go install golang.org/x/tools/gopls@latest
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 
@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
     vim.cmd('au BufWritePre *.go lua goimports(1000)')
-    vim.cmd('au BufWritePre *.go lua vim.lsp.buf.formatting()')
+    vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format()')
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end

@@ -104,6 +104,9 @@ Plug 'nvim-neotest/neotest-go'
 " editorconfig
 Plug 'gpanders/editorconfig.nvim'
 
+" colorizor
+Plug 'nvchad/nvim-colorizer.lua'
+
 call plug#end()
 
 set background=dark

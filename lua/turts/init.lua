@@ -40,3 +40,5 @@ autocmd({"FileType"}, {
         vim.opt.expandtab = true
     end
 })
+
+require('colorizer').setup()
