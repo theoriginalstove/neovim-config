@@ -1,11 +1,12 @@
-local lspconfig = require("lspconfig")
--- install gopls with `go install golang.org/x/tools/gopls@latest
+local configs = require("lspconfig/configs")
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local lspconfig = require("lspconfig")
+
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, {buffer=0})
@@ -16,27 +17,27 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = vim.lsp.buf.format })
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-lspconfig.templ.setup{}
-lspconfig.html.setup({
+lspconfig.rls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "html", "templ" },
-})
+    settings = {
+        unstable_features = true,
+        build_on_save = false,
+        all_features = true,
+    }
+}
 
+lspconfig.rust_analyzer.setup{
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = true,
+            }
+        }
+    }
+}
 
-lspconfig.htmx.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "html", "htmx" },
-})
-
-lspconfig.tailwindcss.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "astro", "templ", "javascript", "typescript", "react" },
-})

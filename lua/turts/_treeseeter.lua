@@ -25,12 +25,29 @@ require'nvim-treesitter.configs'.setup{
     },
 }
 
-require("nvim-treesitter.parsers").get_parser_configs().just = {
+vim.filetype.add({
+    extension = {
+        perm = "perm",
+        cypher = "cypher",
+    }
+})
+
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+-- perm / permify
+vim.treesitter.language.register('perm', 'perm')
+parser_config.perm = {
   install_info = {
-    url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
-    files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
-    use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
+    url = 'https://github.com/theoriginalstove/tree-sitter-perm', -- local path or git repo
+    files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
   },
-  maintainers = { "@IndianBoy42" },
+}
+
+-- cypher
+vim.treesitter.language.register('cypher', 'cypher')
+parser_config.cypher = {
+    install_info = {
+        url = '~/code/tree-sitter-cypher',
+        files = { "src/parser.c", "src/scanner.c" },
+    },
 }

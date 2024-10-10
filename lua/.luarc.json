@@ -1,4 +1,11 @@
 {
+    "diagnostics": {
+        "enable": true,
+        "globals": [
+            "vim",
+            "use"
+        ]
+    },
     "workspace.library": [
         "/Users/sturturo/.config/nvim",
         "/Users/sturturo/.vim/plugged/vim-devicons",

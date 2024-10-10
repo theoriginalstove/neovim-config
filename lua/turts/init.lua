@@ -42,6 +42,7 @@ autocmd({"FileType"}, {
     end
 })
 
+require("mason").setup()
 
 vim.filetype.add({
     extension = {

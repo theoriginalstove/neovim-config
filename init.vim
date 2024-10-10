@@ -112,8 +112,10 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 
-"tree sitter for just files
-Plug 'IndianBoy42/tree-sitter-just'
+Plug 'williamboman/mason.nvim'
+
+" tree sitter for perm files
+" Plug 'theoriginalstove/tree-sitter-perm'
 
 call plug#end()
 
