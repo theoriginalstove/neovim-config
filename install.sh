@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-rm -rf ~/.config/nvim/
-
-mkdir -p ~/.config/nvim/plugin/lsp
-mkdir -p ~/.config/nvim/after/plugin/lsp
-mkdir -p ~/.config/nvim/lua 
-
-rm -rf $HOME/.config/nvim/lua/turts
+rm -rf $HOME/.config/nvim/
 
 #remake the dirs
 mkdir -p $HOME/.config/nvim/lua/turts
