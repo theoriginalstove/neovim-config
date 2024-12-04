@@ -1,6 +1,4 @@
 "======================================
-"general sets
-"======================================
 
 syntax on
 set mouse=a
@@ -50,7 +48,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/nvim-treesitter-refactor' 
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -112,10 +111,12 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 
-"tree sitter for just files
-Plug 'IndianBoy42/tree-sitter-just'
-
 Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+
+Plug 'ribru17/bamboo.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
+
+Plug 'grafana/vim-alloy'
 
 call plug#end()
 
@@ -137,6 +138,4 @@ inoremap <C-]> <C-X><C-]>
 " nnoremap <C-T> :NERDTreeToggle<CR>
 " nnoremap <leader>ns :NERDTreeFind<CR>
 lua require("turts")
-
-
 

@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
     vim.cmd('au BufWritePre *.go lua Goimports(1000)')
-    vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
+    --vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
@@ -46,38 +46,21 @@ lspconfig.gopls.setup{
 }
 
 function Goimports(timeoutms)
-    local context = {source={organizeImports=true}}
-    vim.validate {context={context, "t", true}}
-
     local params = vim.lsp.util.make_range_params()
-    params.context = context
+    params.context = {only = {"source.organizeImports"}}
+
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeoutms)
-    if not result or next(result) == nil then return end
-    local actions = result[1].result
-    if not actions then return end
-    local action = actions[1]
-
-    if action.edit or type(action.command) == "table" then
-        if action.edit then
-            vim.lsp.util.apply_workspace_edit(action.edit, "")
+    for cid, res in pairs(result or {}) do
+        for _, r in pairs(res.result or {}) do
+            if r.edit then
+                local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "uft-16"
+                vim.lsp.util.apply_workspace_edit(r.edit, enc)
+            end
         end
-    else
-        vim.lsp.buf.execute_command(action)
     end
+    -- this should be false otherwise stuff gets messed up.
+    vim.lsp.buf.format({async = false })
 end
-
-if not configs.golang_lint_ls then
-    configs.golangci_lint_ls = {
-        default_config = {
-            cmd = {'golangci-lint-langserver'},
-            root_dir = lspconfig.util.root_pattern('.git','go.mod'),
-            init_options = {
-                command = {"golangci-lint","run","--out-format","json"}
-            }
-        }
-    }
-end
-
 
 -- apparently this causes issues with saving
 --lspconfig.golangci_lint_ls.setup{}

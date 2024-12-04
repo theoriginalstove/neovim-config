@@ -34,9 +34,10 @@ require("lualine").setup{
 
 autocmd({"FileType"}, {
     group = StoveGroup,
-    pattern = "js,tsx,jsx,vue,html,ts",
+    pattern = "js,tsx,jsx,vue,html,ts,json,yml,yaml",
     callback = function()
-        vim.opt.tabsize = 2
+        --vim.opt.tabsize = 2
+        vim.opt.tabstop = 2
         vim.opt.shiftwidth = 2
         vim.opt.softtabstop = 2
         vim.opt.expandtab = true
@@ -49,3 +50,17 @@ vim.filetype.add({
         templ = "templ",
     },
 })
+
+require('bamboo').setup{
+    style = 'multiplex',
+    code_style = {
+        comments = { italic = true },
+    },
+    highlights = {
+        -- make comments blend nicely with background, similar to other color schemes
+        ['@comment'] = { fg = '$grey' },
+    }
+}
+--require('bamboo').load()
+
+require('colorizer').setup{}
