@@ -40,3 +40,32 @@ lspconfig.tailwindcss.setup({
     capabilities = capabilities,
     filetypes = { "astro", "templ", "javascript", "typescript", "react" },
 })
+lspconfig.yamlls.setup{
+    on_attach = on_attach,
+    settings = {
+        yaml = {
+            validate = true,
+            hover = true,
+            format = {
+                enable = true,
+                singleQuote = true
+            },
+            schemaStore = {
+                url = "https://www.schemastore.org/api/json/catalog.json"
+            },
+            schemas = {
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*/.gitlab-ci.yml",
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/home/turts/devops/ci-templates/*",
+            },
+        },
+        redhat = {
+            telemetry = {
+                enabled = false
+            }
+        }
+    },
+    cmd = { "yaml-language-server", "--stdio" },
+    filetypes = {
+        "yaml", "yml", "bu"
+    }
+}

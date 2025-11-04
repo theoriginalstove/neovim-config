@@ -43,6 +43,7 @@ local icons = {
 
 
 vim.opt.completeopt={'menu','menuone','noselect', 'preview'}
+--vim.o.winborder = 'rounded'
 
 cmp.setup({
     window = {

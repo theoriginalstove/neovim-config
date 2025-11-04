@@ -66,9 +66,6 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
 
-Plug 'sainnhe/gruvbox-material'
-Plug 'sainnhe/everforest'
-Plug 'morhetz/gruvbox'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -86,7 +83,7 @@ Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'f-person/git-blame.nvim'
 
 "project workspace
-Plug 'ahmedkhalf/project.nvim'
+Plug 'theoriginalstove/project.nvim'
 
 " bufferline
 Plug 'nvim-lualine/lualine.nvim'
@@ -114,14 +111,28 @@ Plug 'windwp/nvim-ts-autotag'
 
 Plug 'williamboman/mason.nvim'
 
-" tree sitter for perm files
-" Plug 'theoriginalstove/tree-sitter-perm'
+Plug 'apple/pkl-neovim'
+Plug 'norcalli/nvim-colorizer.lua'
 
+" tree sitter for perm files
+Plug 'theoriginalstove/tree-sitter-perm'
+
+Plug 'mason-org/mason-lspconfig.nvim'
+
+" themes
+Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8', { 'branch': 'neovim' }
+Plug 'savq/melange-nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'neanias/everforest-nvim'
 call plug#end()
 
+"set background=dark
+"let g:gruvbox_background = 'hard'
+"colorscheme gruvbox-material
 set background=dark
-let g:gruvbox_background = 'hard'
-colorscheme gruvbox-material
+colorscheme everforest
 
 "nvim terminal escape
 tnoremap <C-H> <C-\><C-N><C-W><C-H>

@@ -27,15 +27,15 @@ require("turts._yamlls")
 require("lualine").setup{
     options = {
         icons_enabled = true,
-        theme = 'gruvbox'
+        theme = 'everforest'
     }
 }
 
 autocmd({"FileType"}, {
     group = StoveGroup,
-    pattern = "js,tsx,jsx,vue,html,ts",
+    pattern = "js,tsx,jsx,vue,html,ts,toml",
     callback = function()
-        vim.opt.tabsize = 2
+        vim.opt.tabstop = 2
         vim.opt.shiftwidth = 2
         vim.opt.softtabstop = 2
         vim.opt.expandtab = true

@@ -1,14 +1,19 @@
-
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig/configs")
 -- install gopls with `go install golang.org/x/tools/gopls@latest
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+local get_on_attach = require('turts.utils').get_on_attach
+
 
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    local hover = vim.lsp.buf.hover
+    vim.lsp.buf.hover = function()
+        return hover({ max_width=100, max_height=20, border='rounded' })
+    end
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
@@ -21,9 +26,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
     vim.cmd('au BufWritePre *.go lua Goimports(1000)')
-    vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
+    -- vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 lspconfig.gopls.setup{
@@ -59,18 +64,6 @@ function Goimports(timeoutms)
         end
     end
     vim.lsp.buf.format({async = true})
-end
-
-if not configs.golang_lint_ls then
-    configs.golangci_lint_ls = {
-        default_config = {
-            cmd = {'golangci-lint-langserver'},
-            root_dir = lspconfig.util.root_pattern('.git','go.mod'),
-            init_options = {
-                command = {"golangci-lint","run","--out-format","json"}
-            }
-        }
-    }
 end
 
 

@@ -29,8 +29,16 @@ vim.filetype.add({
     extension = {
         perm = "perm",
         cypher = "cypher",
+        caddy = "Caddyfile",
     }
 })
+
+vim.cmd([[
+    augroup _caddy
+    autocmd!
+    autocmd BufRead,BufEnter Caddyfile set filetype=caddy
+    augroup end
+]])
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
@@ -38,8 +46,9 @@ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 vim.treesitter.language.register('perm', 'perm')
 parser_config.perm = {
   install_info = {
-    url = 'https://github.com/theoriginalstove/tree-sitter-perm', -- local path or git repo
+    url = '~/code/tree-sitter-perm/', -- local path or git repo
     files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+    branch = "main"
   },
 }
 
@@ -49,5 +58,15 @@ parser_config.cypher = {
     install_info = {
         url = '~/code/tree-sitter-cypher',
         files = { "src/parser.c", "src/scanner.c" },
+    },
+}
+
+vim.treesitter.language.register('caddy', 'caddy')
+
+parser_config.caddy = {
+    install_info = {
+        url = "https://github.com/opa-oz/tree-sitter-caddy.git",
+        files = { "src/scanner.c", "src/parser.c" },
+        branch = "main",
     },
 }
