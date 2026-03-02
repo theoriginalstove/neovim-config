@@ -70,7 +70,7 @@ Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'folke/todo-comments.nvim'
@@ -126,13 +126,15 @@ Plug 'lifepillar/vim-solarized8', { 'branch': 'neovim' }
 Plug 'savq/melange-nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'neanias/everforest-nvim'
+
+Plug 'sindrets/diffview.nvim'
 call plug#end()
 
 "set background=dark
-"let g:gruvbox_background = 'hard'
-"colorscheme gruvbox-material
+let g:gruvbox_background = 'hard'
+colorscheme gruvbox-material
 set background=dark
-colorscheme everforest
+"colorscheme everforest
 
 "nvim terminal escape
 tnoremap <C-H> <C-\><C-N><C-W><C-H>

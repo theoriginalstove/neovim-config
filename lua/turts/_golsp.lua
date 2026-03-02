@@ -1,7 +1,5 @@
-local lspconfig = require("lspconfig")
-local configs = require("lspconfig/configs")
 -- install gopls with `go install golang.org/x/tools/gopls@latest
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 local get_on_attach = require('turts.utils').get_on_attach
 
@@ -31,7 +29,7 @@ local on_attach = function(client, bufnr)
 
 end
 
-lspconfig.gopls.setup{
+vim.lsp.config('gopls',{
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
@@ -48,7 +46,7 @@ lspconfig.gopls.setup{
     init_options = {
         usePlaceholders = true,
     }
-}
+})
 
 function Goimports(timeoutms)
     local params = vim.lsp.util.make_range_params()
@@ -71,3 +69,4 @@ end
 --lspconfig.golangci_lint_ls.setup{}
 --
 
+vim.lsp.enable('gopls')

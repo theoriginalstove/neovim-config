@@ -3,16 +3,13 @@ local autocmd = vim.api.nvim_create_autocmd
 local set = vim.opt
 local StoveGroup = augroup('TheOriginalStove', {})
 
-require("turts._cssls")
+require("turts._remaps")
 require("turts._cmp")
 require("turts._debugger")
 require("turts._dockerlsp")
 require("turts._golsp")
 require("turts._lua_lsp")
-require("turts._omnisharp")
 require("turts._project")
-require("turts._pythonlsp")
-require("turts._remaps")
 require("turts._tailwindcsslsp")
 require("turts._telescope")
 require("turts._terraformlsp")

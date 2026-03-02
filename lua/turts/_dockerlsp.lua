@@ -1,11 +1,10 @@
 local get_on_attach = require('turts.utils').get_on_attach
 
 local on_attach = get_on_attach(client, bufnr, {})
-local lspconfig = require('lspconfig')
 
-lspconfig.dockerls.setup{
+vim.lsp.config('dockerls', {
     on_attach = on_attach,
-}
+})
 
 local function set_filetype(pattern, filetype)
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

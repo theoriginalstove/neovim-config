@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local on_attach = function(client, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
@@ -14,15 +14,15 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
 end
 
-lspconfig.volar.setup{
+vim.lsp.config('volar', {
     capabilities = capabilities,
     filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
     on_attach = on_attach,
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock", "package.json"),
-}
+})
 
 
-lspconfig.denols.setup{
+vim.lsp.config('denols', {
     on_attach = on_attach,
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", "deno.lock", "package.json"),
-}
+})

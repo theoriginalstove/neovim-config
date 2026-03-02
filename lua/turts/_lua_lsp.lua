@@ -6,11 +6,10 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 local get_on_attach = require('turts.utils').get_on_attach
 
 local on_attach = get_on_attach(client, bufnr, {})
-local lspconfig = require("lspconfig")
 
-lspconfig.eslint.setup{}
+vim.lsp.config('eslint', {})
 
-lspconfig.lua_ls.setup{
+vim.lsp.config('lua_ls', {
     capabilities = capabilities,
     on_attach = on_attach,
     on_init = function(client)
@@ -36,30 +35,29 @@ lspconfig.lua_ls.setup{
     settings = {
         Lua = {}
     }
-}
+})
 
-lspconfig.buf_ls.setup{
+vim.lsp.config('buf_ls', {
     on_attach = on_attach,
-}
+})
 
-lspconfig.sourcekit.setup{
+vim.lsp.config('sourcekit', {
     capabilities = capabilities,
     on_attach = on_attach
-}
+})
 
-lspconfig.kotlin_language_server.setup{
+vim.lsp.config('kotlin_language_server', {
     capabilities = capabilities,
     on_attach = on_attach,
     filetypes = {"kotlin", "kt", "kts"},
     cmd = { "/opt/homebrew/bin/kotlin-lsp" },
-}
+})
 
-lspconfig.zls.setup{
+vim.lsp.config('zls', {
     capabilities = capabilities,
     on_attach = on_attach,
     cmd = { "zls" },
     filetypes = { "zig", "zir" },
-    root_dir = lspconfig.util.root_pattern("build.zig", ".git") or vim.loop.cwd,
     single_file_support = true,
-}
+})
 

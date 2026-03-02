@@ -21,26 +21,26 @@ local on_attach = function(client, bufnr)
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-lspconfig.templ.setup{}
-lspconfig.html.setup({
+vim.lsp.config('templ', {})
+vim.lsp.config('html', {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "html", "templ" },
 })
 
 
-lspconfig.htmx.setup({
+vim.lsp.config('htmx', {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "html", "htmx" },
 })
 
-lspconfig.tailwindcss.setup({
+vim.lsp.config('tailwindcss', {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "astro", "templ", "javascript", "typescript", "react" },
 })
-lspconfig.yamlls.setup{
+vim.lsp.config('yamlls', {
     on_attach = on_attach,
     settings = {
         yaml = {
@@ -68,4 +68,6 @@ lspconfig.yamlls.setup{
     filetypes = {
         "yaml", "yml", "bu"
     }
-}
+})
+
+vim.lsp.enable('yamlls')
