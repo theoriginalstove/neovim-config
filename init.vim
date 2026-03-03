@@ -50,7 +50,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mbbill/undotree'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-Plug 'nvim-treesitter/nvim-treesitter-refactor' 
+Plug 'nvim-treesitter/nvim-treesitter-locals'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -58,10 +58,10 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-omni'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-omni' 
+Plug 'hrsh7th/cmp-path' 
+Plug 'hrsh7th/cmp-cmdline' 
+Plug 'hrsh7th/nvim-cmp' 
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'onsails/lspkind-nvim'
@@ -70,13 +70,12 @@ Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'folke/todo-comments.nvim'
 
-" Typescript
-Plug 'jose-elias-alvarez/null-ls.nvim'
+" Typescript Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
 " git blame 
@@ -150,6 +149,3 @@ inoremap <C-]> <C-X><C-]>
 " nnoremap <C-T> :NERDTreeToggle<CR>
 " nnoremap <leader>ns :NERDTreeFind<CR>
 lua require("turts")
-
-
-

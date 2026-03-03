@@ -46,3 +46,11 @@ vim.filetype.add({
         templ = "templ",
     },
 })
+
+require'nvim-treesitter'.setup {}
+require'nvim-treesitter'.install { 'go', 'rust', 'javascript', 'typescript', 'zig', 'python', 'lua' }
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'go', 'rust', 'javascript', 'typescript', 'zig', 'python', 'lua' },
+    callback = function() vim.treesitter.start() end,
+})
