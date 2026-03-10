@@ -10,21 +10,18 @@ require("turts._dockerlsp")
 require("turts._golsp")
 require("turts._lua_lsp")
 require("turts._project")
-require("turts._tailwindcsslsp")
 require("turts._telescope")
 require("turts._terraformlsp")
 require("turts._todo")
 require("turts._tsserver")
-require("turts._treeseeter")
 require("turts._templ")
 require("turts._volar")
-require("turts._yamlls")
 
 
 require("lualine").setup{
     options = {
         icons_enabled = true,
-        theme = 'everforest'
+        theme = 'auto'
     }
 }
 
@@ -54,3 +51,22 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'go', 'rust', 'javascript', 'typescript', 'zig', 'python', 'lua' },
     callback = function() vim.treesitter.start() end,
 })
+
+-- Theme setup (switches light/dark based on time of day)
+local function set_theme()
+    local hour = tonumber(os.date("%H"))
+    local bg = (hour >= 7 and hour < 19) and "light" or "dark"
+    require("gruvbox").setup({
+        dim_inactive = true,
+        contrast = "hard",
+    })
+    vim.o.background = bg
+    vim.cmd("colorscheme gruvbox")
+end
+
+set_theme()
+
+-- Re-evaluate every 30 minutes
+vim.fn.timer_start(1800000, function()
+    set_theme()
+end, { ["repeat"] = -1 })
