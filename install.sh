@@ -5,7 +5,7 @@ rm -rf $HOME/.config/nvim/
 #remake the dirs
 mkdir -p $HOME/.config/nvim/lua/turts
 
-for f in `find . -regex ".*\.vim$\|.*\.lua$" | sed 's|^./||'`; do
+for f in `find . -name "*.lua" | sed 's|^./||'`; do
 	echo "Removing: $f"
 	rm -rf $HOME/.config/$f
 	echo "Linking $f"

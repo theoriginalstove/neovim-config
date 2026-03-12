@@ -1,37 +1,16 @@
 -- install gopls with `go install golang.org/x/tools/gopls@latest
+local on_attach = require('turts.utils').on_attach
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-local get_on_attach = require('turts.utils').get_on_attach
 
-
-
-local on_attach = function(client, bufnr)
-    local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-    local hover = vim.lsp.buf.hover
-    vim.lsp.buf.hover = function()
-        return hover({ max_width=100, max_height=20, border='rounded' })
-    end
-
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {buffer=0})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
-    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, {buffer=0})
-    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, {buffer=0})
-    vim.keymap.set("n", "<leader>dj", vim.diagnostic.goto_next, {buffer=0})
-    vim.keymap.set("n", "<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
-    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
-    vim.keymap.set("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>", {buffer=0})
-    vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", {buffer=0})
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {buffer=0})
-    vim.cmd('au BufWritePre *.go lua Goimports(1000)')
-    -- vim.cmd('au BufWritePre *.go lua vim.lsp.buf.format({ async = true })')
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-end
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function() Goimports(1000) end,
+})
 
 vim.lsp.config('gopls',{
-    capabilities = capabilities,
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         gopls = {
             gofumpt = true,

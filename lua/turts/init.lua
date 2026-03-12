@@ -10,15 +10,12 @@ require("turts._dockerlsp")
 require("turts._golsp")
 require("turts._lua_lsp")
 require("turts._project")
-require("turts._tailwindcsslsp")
 require("turts._telescope")
 require("turts._terraformlsp")
 require("turts._todo")
 require("turts._tsserver")
-require("turts._treeseeter")
 require("turts._templ")
 require("turts._volar")
-require("turts._yamlls")
 
 
 require("lualine").setup{

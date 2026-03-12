@@ -18,7 +18,14 @@ map('n', '<C-s>', '<C-w>H', options)
 map('n', '<C-c>', '<C-w>K', options)
 
 -- nvim terminal escape
---
+map('t', '<C-H>', '<C-\\><C-N><C-W><C-H>', options)
+map('t', '<C-J>', '<C-\\><C-N><C-W><C-J>', options)
+map('t', '<C-K>', '<C-\\><C-N><C-W><C-K>', options)
+map('t', '<C-L>', '<C-\\><C-N><C-W><C-L>', options)
+
+-- insert mode tag completion
+map('i', '<C-]>', '<C-X><C-]>', options)
+
 -- Telescope remaps
 map('n', '<c-t>', ":Telescope file_browser hidden=true <cr>", options)
 map('n', '<leader>ds', ":Telescope lsp_document_symbols<cr>", options)
