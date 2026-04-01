@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Theme setup (switches light/dark based on time of day)
 local function set_theme()
     local hour = tonumber(os.date("%H"))
-    local bg = (hour >= 7 and hour < 19) and "light" or "dark"
+    local bg = (hour >= 7 and hour < 18) and "light" or "dark"
     require("gruvbox").setup({
         dim_inactive = true,
         contrast = "hard",

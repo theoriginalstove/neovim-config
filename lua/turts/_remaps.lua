@@ -30,6 +30,7 @@ map('i', '<C-]>', '<C-X><C-]>', options)
 map('n', '<leader>fb', ":Telescope file_browser hidden=true<cr>", options)
 map('n', '<leader>ff', ":Telescope find_files hidden=true<cr>", options)
 map('n', '<leader>ds', ":Telescope lsp_document_symbols<cr>", options)
+map('n', '<leader>lg', ":Telescope live_grep<cr>", options)
 map('n', '<c-f>', ":Telescope live_grep<cr>", options)
 
 -- Todo Comments remaps

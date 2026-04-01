@@ -14,6 +14,7 @@ function M.on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>ca", "<cmd>Telescope lsp_code_actions<cr>", opts)
     vim.keymap.set("n", "<leader>lr", "<cmd>Telescope lsp_references<cr>", opts)
     vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
     vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 end

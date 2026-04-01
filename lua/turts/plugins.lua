@@ -108,6 +108,11 @@ return {
     { "rebelot/kanagawa.nvim" },
     { "neanias/everforest-nvim" },
 
+    {
+      "pmizio/typescript-tools.nvim",
+      dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+      opts = {},
+    },
     -- lsp enhancements:
     { 
         "ray-x/lsp_signature.nvim",
