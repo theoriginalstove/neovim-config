@@ -114,7 +114,7 @@ return {
       opts = {},
     },
     -- lsp enhancements:
-    { 
+    {
         "ray-x/lsp_signature.nvim",
         event = "InsertEnter",
         opts = {
@@ -124,4 +124,21 @@ return {
             }
         }
     },
+
+    -- Datadog gutter signs (local plugin)
+--    {
+--        dir = "~/code/datadog.nvim",
+--        name = "datadog.nvim",
+--        main = "datadog",
+--        event = "BufReadPost",
+--        cmd = { "DatadogRefresh", "DatadogHover" },
+--        opts = {
+--            -- service = "my-service",
+--            -- env = "prod",
+--        },
+--        keys = {
+--            { "<leader>dd", "<cmd>DatadogHover<cr>",   desc = "Datadog: event at cursor" },
+--            { "<leader>dr", "<cmd>DatadogRefresh<cr>", desc = "Datadog: refresh signs" },
+--        },
+--    },
 }
