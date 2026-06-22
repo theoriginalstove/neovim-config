@@ -125,6 +125,8 @@ return {
         }
     },
 
+    { 'augmentcode/augment.vim' },
+
     -- Datadog gutter signs (local plugin)
 --    {
 --        dir = "~/code/datadog.nvim",
@@ -141,4 +143,10 @@ return {
 --            { "<leader>dr", "<cmd>DatadogRefresh<cr>", desc = "Datadog: refresh signs" },
 --        },
 --    },
+--
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+    }
+
 }

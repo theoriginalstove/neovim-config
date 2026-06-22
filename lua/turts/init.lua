@@ -3,6 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local set = vim.opt
 local StoveGroup = augroup('TheOriginalStove', {})
 
+require("turts._augment")
 require("turts._remaps")
 require("turts._cmp")
 require("turts._debugger")
